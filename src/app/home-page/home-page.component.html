@@ -1,0 +1,12 @@
+<header class="masthead">
+    <div class="container h-100">
+      <div class="row h-100 align-items-center">
+        <div class="col-6 text-left" *ngIf="location">
+            <h5 ><i class="fa fa-compass"></i><b>&nbsp;{{location}}</b></h5>
+          <h1 *ngIf="confirmedCases"><b>Keep Yourself Home and Quarantined</b></h1>
+          <p class="lead" *ngIf="deaths || recovered || confirmedCases"><b>Total Cases in {{location}}:&nbsp;</b> <span class ="databeautify">{{confirmedCases}}</span> || <b>Deaths:&nbsp;</b> <span class ="databeautify">{{deaths}}</span> || <b>Recovered:&nbsp;</b> <span class ="databeautify">{{recovered}}</span></p>
+          <p class="date" *ngIf="dataDate">Updated: {{dataDate}}</p>
+        </div>
+      </div>
+    </div>
+  </header>

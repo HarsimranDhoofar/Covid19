@@ -1,0 +1,23 @@
+.masthead {
+    height: 100vh;
+    min-height: 500px;
+    background-image: url('../../assets/covidBackdround.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backdrop-filter:  blur(8px);
+  
+    h1{
+      font-size: 50px;
+      color: rgb(99,198,177);
+    }
+    .date{
+       color: gray;
+    }
+    .databeautify{
+      font-size: xx-large;
+      color:rgb(226,159,167);
+    }
+  }
+ 
+  
