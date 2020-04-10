@@ -11,6 +11,7 @@ export class FilterByCountryComponent implements OnInit {
 confirmedCases: any;
 deaths: any;
 recovered: any;
+country: any;
   constructor(private getData: GetDataService) { }
 
   ngOnInit(): void {
@@ -24,6 +25,7 @@ recovered: any;
     });
   }
   SelectedCountry(country){
+    this.country = country
     console.log(country);
     this.getData.covid19Stats().subscribe((covidData)=>{
       let county = covidData[country];
@@ -34,6 +36,7 @@ recovered: any;
       this.deaths = todaysdata['deaths'];
       this.recovered =todaysdata['recovered'];
       console.log(this.confirmedCases);
+      console.log(this.deaths);
     });
   }
 }

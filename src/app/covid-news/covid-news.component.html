@@ -1,0 +1,19 @@
+ <!-- Page Features -->
+ <div class="new">
+ <div class="container">
+  <div class="card-deck">
+    <div class="card mb-3" style="min-width: 18rem;" *ngFor="let new of news" >
+      <img class="card-img-top" src="{{new.urlToImage}}" alt="Card image cap" height="180px">
+      <div class="card-body">
+        <h5 class="card-title">{{new.title}}</h5>
+        <p class="card-text">{{new.description}}</p>
+        <a href="{{new.url}}" class="btn btn-primary" role="button" aria-pressed="true">Lean More...</a>
+      </div>
+      <div class="card-footer">
+        <small class="text-muted">Published on: {{new.publishedAt}}</small>
+      </div>
+    </div>
+    
+  </div>
+  </div>
+</div>

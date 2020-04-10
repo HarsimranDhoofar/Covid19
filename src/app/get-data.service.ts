@@ -14,4 +14,7 @@ export class GetDataService {
   covid19Stats() {
     return this.http.get(`https://pomber.github.io/covid19/timeseries.json`);
   }
+  getNews(){
+    return this.http.get(`https://newsapi.org/v2/everything?q=corona&apiKey=75ca155fde2d49a8b10303e5ee6e3606`);
+  }
 }

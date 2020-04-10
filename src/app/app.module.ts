@@ -6,13 +6,17 @@ import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FilterByCountryComponent } from './filter-by-country/filter-by-country.component';
+import { FooterComponent } from './footer/footer.component';
+import { CovidNewsComponent } from './covid-news/covid-news.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
     NavbarComponent,
-    FilterByCountryComponent
+    FilterByCountryComponent,
+    FooterComponent,
+    CovidNewsComponent
   ],
   imports: [
     BrowserModule,
