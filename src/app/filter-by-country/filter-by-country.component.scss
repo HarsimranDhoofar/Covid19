@@ -1,0 +1,19 @@
+.masthead {
+    height: 40vh;
+    min-height: 500px;
+    background-color: rgb(52,58,64);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    backdrop-filter:  blur(8px);}
+
+    h1{
+
+        color: rgb(99,198,177);
+      }
+
+      .scrollable-menu {
+        height: auto;
+        max-height: 200px;
+        overflow-x: hidden;
+    }
