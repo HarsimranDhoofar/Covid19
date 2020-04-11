@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import{GetDataService} from '../get-data.service';
 import { Subscription} from 'rxjs';
+import { NgxUiLoaderService } from 'ngx-ui-loader';
 @Component({
   selector: 'app-home-page',
   templateUrl: './home-page.component.html',
@@ -12,9 +13,11 @@ dataDate : any;
 confirmedCases: any;
 deaths: any;
 recovered: any;
-  constructor(private getData: GetDataService) { }
+  constructor(private getData: GetDataService,
+    private ngxService: NgxUiLoaderService) { }
 
   ngOnInit(): void {
+    this.ngxService.start();
    this.getLocation();
    this.getCovid19Stats();
   }
@@ -35,12 +38,18 @@ getCovid19Stats(): void{
         this.confirmedCases= todaysdata['confirmed'];
         this.deaths = todaysdata['deaths'];
         this.recovered =todaysdata['recovered'];
+        this.ngxService.stop();
   });
 
 }
 
   getLocation(): void{
     if (navigator.geolocation) {
+      if(navigator.geolocation == null){
+        this.ngxService.stop();
+         alert("Please grant access to location if you want to use all the features on this site");
+        this.getLocation();
+      }
         navigator.geolocation.getCurrentPosition((position)=>{
           const longitude = position.coords.longitude;
           const latitude = position.coords.latitude;
@@ -54,8 +63,11 @@ getCovid19Stats(): void{
         });
         console.log(this.location);
         });
-    } else {
-       console.log("No support for geolocation")
+    }
+    else{
+      this.ngxService.stop();
+       alert("Please grant access to location if you want to use all the features on this site");
+      this.getLocation();
     }
   }
 
