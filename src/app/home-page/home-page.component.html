@@ -1,8 +1,13 @@
 <ngx-ui-loader></ngx-ui-loader>
 <header class="masthead">
     <div class="container h-100">
+     
       <div class="row h-100 align-items-center">
         <div class="col-12 text-left" *ngIf="location">
+          <div class="alert alert-danger" role="alert" *ngIf="locationNotAllowed">
+            <p>This Website was not able to access your location. You can give access to location in your browser settings.</p>
+            <p><b>DEFAULT LOCATION SET TO: Canada</b></p>
+          </div>
             <h5 ><i class="fa fa-compass"></i><b>&nbsp;{{location}}</b></h5>
           <h1 *ngIf="confirmedCases"><b>Keep Yourself Home and Quarantined</b></h1>
           <p class="lead" *ngIf="deaths || recovered || confirmedCases"><b>Total Cases in {{location}}:&nbsp;</b> <span class ="databeautify">{{confirmedCases}}</span> || <b>Deaths:&nbsp;</b> <span class ="databeautify">{{deaths}}</span> || <b>Recovered:&nbsp;</b> <span class ="databeautify">{{recovered}}</span></p>

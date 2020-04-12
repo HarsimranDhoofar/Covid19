@@ -13,27 +13,31 @@ dataDate : any;
 confirmedCases: any;
 deaths: any;
 recovered: any;
+locationNotAllowed: boolean;
   constructor(private getData: GetDataService,
     private ngxService: NgxUiLoaderService) { }
 
   ngOnInit(): void {
     this.ngxService.start();
-   this.getLocation();
-   this.getCovid19Stats();
+    this.getLocation();
+    
   }
 
 getCovid19Stats(): void{
   this.getData.covid19Stats().subscribe((covidData)=>{
-    
-     //let country = covidData[this.location];
-    
-        if(covidData[this.location] == null){
-          this.getCovid19Stats();
-        }
-        
-        let county = covidData[this.location];
-        let length =Object.keys(county).length -1;
-        let todaysdata = county[length];
+    let country ="";
+    if(typeof(this.location) == "undefined"){
+      this.locationNotAllowed = true;
+       country =covidData["Canada"];
+       this.location = "Canada"
+    }
+    else{
+      this.locationNotAllowed = false;
+       country = covidData[this.location];
+    }
+      console.log(country);
+        let length =Object.keys(country).length -1;
+        let todaysdata = country[length];
         this.dataDate = todaysdata['date'];
         this.confirmedCases= todaysdata['confirmed'];
         this.deaths = todaysdata['deaths'];
@@ -44,14 +48,9 @@ getCovid19Stats(): void{
 }
 
   getLocation(): void{
-    if (navigator.geolocation) {
-      if(navigator.geolocation == null){
-        this.ngxService.stop();
-         alert("Please grant access to location if you want to use all the features on this site");
-        this.getLocation();
-      }
         navigator.geolocation.getCurrentPosition((position)=>{
           const longitude = position.coords.longitude;
+          console.log(longitude);
           const latitude = position.coords.latitude;
         this.location =  this.getData.callApi(longitude, latitude).subscribe((locationData) =>{
           console.log(locationData);
@@ -60,16 +59,19 @@ getCovid19Stats(): void{
           let components = resultsArray["components"];
           let country = components["country"];
           this.location = country;
+            this.getCovid19Stats(); 
         });
-        console.log(this.location);
+        
+        },
+        (failure) => {
+      
+          this.getCovid19Stats(); 
+          
         });
-    }
-    else{
-      this.ngxService.stop();
-       alert("Please grant access to location if you want to use all the features on this site");
-      this.getLocation();
-    }
+      }
+       
+    
   }
 
   
-}
+
