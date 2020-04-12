@@ -35,7 +35,6 @@ getCovid19Stats(): void{
       this.locationNotAllowed = false;
        country = covidData[this.location];
     }
-      console.log(country);
         let length =Object.keys(country).length -1;
         let todaysdata = country[length];
         this.dataDate = todaysdata['date'];
@@ -50,10 +49,8 @@ getCovid19Stats(): void{
   getLocation(): void{
         navigator.geolocation.getCurrentPosition((position)=>{
           const longitude = position.coords.longitude;
-          console.log(longitude);
           const latitude = position.coords.latitude;
         this.location =  this.getData.callApi(longitude, latitude).subscribe((locationData) =>{
-          console.log(locationData);
           let results = locationData["results"];
           let resultsArray = results[0];
           let components = resultsArray["components"];

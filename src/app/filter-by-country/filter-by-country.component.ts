@@ -19,14 +19,11 @@ country: any;
   }
   getCovid19Stats(): void{
     this.getData.covid19Stats().subscribe((covidData)=>{
-      console.log(covidData);
     this.countryArray = Object.keys(covidData)
-   console.log(this.countryArray);
     });
   }
   SelectedCountry(country){
     this.country = country
-    console.log(country);
     this.getData.covid19Stats().subscribe((covidData)=>{
       let county = covidData[country];
       let length =Object.keys(county).length -1;
@@ -35,8 +32,6 @@ country: any;
       this.confirmedCases= todaysdata['confirmed'];
       this.deaths = todaysdata['deaths'];
       this.recovered =todaysdata['recovered'];
-      console.log(this.confirmedCases);
-      console.log(this.deaths);
     });
   }
 }
