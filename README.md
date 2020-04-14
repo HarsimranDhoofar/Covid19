@@ -1,7 +1,6 @@
 # Covid19
 
 Check out live demo [here](https://harsimrandhoofar.github.io/Covid19/)
-![alt text](https://harsimrandhoofar.github.io/Portfolio/images/Covid_Gif.gif)
 
 ## What I learned?
 
